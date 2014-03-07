@@ -72,6 +72,9 @@
 					<li>
 						<a href="{relative_path}/users"><i class="fa fa-fw fa-users" title="[[global:header.users]]"></i><span class="visible-xs-inline"> [[global:header.users]]</span></a>
 					</li>
+					<li>
+                        <a href="{relative_path}/game"><i class="fa fa-fw fa-gavel" title="[[global:header.game]]"></i><span class="visible-xs-inline"> [[global:header.game]]</span></a>
+                    </li>
 					<!-- IF isAdmin -->
 					<li>
 						<a href="{relative_path}/admin"><i class="fa fa-fw fa-cogs" title="[[global:header.admin]]"></i><span class="visible-xs-inline"> [[global:header.admin]]</span></a>

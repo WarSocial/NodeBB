@@ -11,7 +11,8 @@ var path = require('path'),
 	ThreadTools = require('../threadTools'),
 	posts = require('../posts'),
 	categories = require('../categories'),
-	categoryTools = require('../categoryTools')
+	categoryTools = require('../categoryTools'),
+    map = require('../map'),
 	meta = require('../meta'),
 	Plugins = require('../plugins'),
 	utils = require('../../public/src/utils'),
@@ -496,6 +497,26 @@ var path = require('path'),
 					reset_code: req.params.code
 				});
 			});
+
+            app.get('/game', function (req, res, next) {
+                var uid = (req.user) ? req.user.uid : 0;
+
+                async.parallel({
+                    map: function(next) {
+                        map.getMapData(1, function(err, mapData) {
+                            if(err) {
+                                return next(err);
+                            }
+                            next(null, mapData);
+                        });
+                    },
+                    message: function(next) {
+                        next(null, "This is api data! Hurray");
+                    }
+                }, function(err, results) {
+                    res.json(results);
+                });
+            });
 
 			app.get('/404', function (req, res) {
 				res.json({});

@@ -28,6 +28,7 @@
 	"header.notifications": "Notifications",
 	"header.search": "Search",
 	"header.profile": "Profile",
+    "header.game": "Game",
 
 	"notifications.loading": "Loading Notifications",
 	"chats.loading": "Loading Chats",
