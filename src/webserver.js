@@ -446,8 +446,8 @@ module.exports.server = server;
 
 		// Basic Routes (entirely client-side parsed, goal is to move the rest of the crap in this file into this one section)
 		(function () {
-			var routes = ['login', 'register', 'account', 'recent', 'popular', '403', '404', '500'],
-				loginRequired = ['unread', 'notifications', 'game'];
+			var routes = ['login', 'register', 'account', 'recent', 'popular', 'game', '403', '404', '500'],
+				loginRequired = ['unread', 'notifications'];
 
 			async.each(routes.concat(loginRequired), function(route, next) {
 				app.get('/' + route, function (req, res) {
