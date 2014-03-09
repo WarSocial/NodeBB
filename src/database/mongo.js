@@ -20,7 +20,8 @@
 
 
 	module.init = function(callback) {
-		mongoClient.connect('mongodb://'+ nconf.get('mongo:host') + ':' + nconf.get('mongo:port') + '/' + nconf.get('mongo:database'), function(err, _db) {
+
+		mongoClient.connect(process.env.MONGO_URL, function(err, _db) {
 			if(err) {
 				winston.error("NodeBB could not connect to your Mongo database. Mongo returned the following error: " + err.message);
 				process.exit();
@@ -34,9 +35,8 @@
 				db: db
 			});
 
-
-			if(nconf.get('mongo:password') && nconf.get('mongo:username')) {
-				db.authenticate(nconf.get('mongo:username'), nconf.get('mongo:password'), function (err) {
+			if(process.env.MONGO_USER && process.env.MONGO_PW) {
+				db.authenticate(process.env.MONGO_USER, process.env.MONGO_PW, function (err) {
 					if(err) {
 						winston.error(err.message);
 						process.exit();
