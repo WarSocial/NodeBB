@@ -1,6 +1,6 @@
 {
     "base_url": "http://ws-web.herokuapp.com/",
-    "port": "4567", 
+    "port": "4567",
     "use_port": false,
     "bind_address": "0.0.0.0",
     "database": "mongo",
