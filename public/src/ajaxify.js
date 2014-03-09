@@ -95,11 +95,20 @@ var ajaxify = {};
 			templates.flush();
 			templates.load_template(function () {
 				exec_body_scripts(content);
-				require(['forum/' + tpl_url], function(script) {
-					if (script && script.init) {
-						script.init();
-					}
-				});
+
+                if (tpl_url != 'game'){
+                    require(['forum/' + tpl_url], function(script) {
+                        if (script && script.init) {
+                            script.init();
+                        }
+                    });
+                } else {  // load game javascript and init
+                    require(['game/' + tpl_url], function(script) {
+                        if (script && script.init) {
+                            script.init();
+                        }
+                    });
+                }
 
 				if (callback) {
 					callback();

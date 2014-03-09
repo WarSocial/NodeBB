@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
 <head>
 	<title>{browserTitle}</title>
 	<!-- BEGIN metaTags -->
@@ -27,7 +27,9 @@
 			waitSeconds: 3,
 			urlArgs: "{cache-buster}",
 			paths: {
-				"forum": '../forum'
+			    "angularjs": '../../vendor/angularjs/angular.min',
+				"forum": '../forum',
+				"game": '../game'
 			}
 		});
 	</script>
