@@ -1,8 +1,8 @@
-define(['game/main'], function() {
+define(['raphaeljs', 'game/main'], function() {
 	var	Game = {};
 
 	Game.init = function() {
-        console.log("game init!");
+        angular.bootstrap(document, ['wsGameModule'])
 	};
 
 	return Game;

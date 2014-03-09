@@ -9,8 +9,9 @@ var socket,
 
 (function () {
 	var showWelcomeMessage = false;
+    var wsGameModule = angular.module('wsGameModule', []);
 
-	app.loadConfig = function() {
+    app.loadConfig = function() {
 		$.ajax({
 			url: RELATIVE_PATH + '/api/config',
 			success: function (data) {

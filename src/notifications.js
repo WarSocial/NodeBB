@@ -13,7 +13,9 @@ var async = require('async'),
 		if (process.env.NODE_ENV === 'development') {
 			winston.info('[notifications.init] Registering jobs.');
 		}
-		new cron('0 0 * * *', Notifications.prune, null, true);
+
+        // TODO: DUSTIN: add back when ticket resolved upstream https://github.com/designcreateplay/NodeBB/issues/1178#issuecomment-37119562
+		//new cron('0 0 * * *', Notifications.prune, null, true);
 	};
 
 	Notifications.get = function(nid, uid, callback) {

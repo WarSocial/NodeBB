@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="wsGameModule">
 <head>
 	<title>{browserTitle}</title>
 	<!-- BEGIN metaTags -->
@@ -27,8 +27,8 @@
 			waitSeconds: 3,
 			urlArgs: "{cache-buster}",
 			paths: {
-			    "angularjs": '../../vendor/angularjs/angular.min',
-				"forum": '../forum',
+			    "raphaeljs": '../../vendor/raphaeljs/raphaeljs.min',
+			    "forum": '../forum',
 				"game": '../game'
 			}
 		});
