@@ -1,0 +1,10 @@
+{
+    "base_url": "http://ws-web.herokuapp.com/",
+    "port": "4567",
+    "use_port": false,
+    "bind_address": "0.0.0.0",
+    "database": "mongo",
+    "bcrypt_rounds": 12,
+    "upload_path": "/public/uploads",
+    "relative_path": ""
+}

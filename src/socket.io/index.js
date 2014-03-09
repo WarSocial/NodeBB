@@ -8,7 +8,7 @@ var	SocketIO = require('socket.io'),
 	fs = require('fs'),
 	nconf = require('nconf'),
 	express = require('express'),
-	socketCookieParser = express.cookieParser(nconf.get('secret')),
+	socketCookieParser = express.cookieParser(process.env.SESSION_SECRET),
 	winston = require('winston'),
 
 	db = require('../database'),

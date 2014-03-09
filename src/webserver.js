@@ -206,7 +206,7 @@ module.exports.server = server;
 
 				app.use(express.session({
 					store: db.sessionStore,
-					secret: nconf.get('secret'),
+					secret: process.env.SESSION_SECRET,
 					key: 'express.sid',
 					cookie: {
 						maxAge: 1000 * 60 * 60 * 24 * parseInt(meta.configs.loginDays || 14, 10)
