@@ -503,14 +503,6 @@ var path = require('path'),
                 var uid = (req.user) ? req.user.uid : 0;
 
                 async.parallel({
-                    map: function(next) {
-                        map.getMapData(1, function(err, mapData) {
-                            if(err) {
-                                return next(err);
-                            }
-                            next(null, mapData);
-                        });
-                    },
                     message: function(next) {
                         next(null, "This is api data! Hurray");
                     }
