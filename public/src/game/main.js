@@ -17,14 +17,14 @@ function GameCtrl($scope) {
         svg.removeAttribute("width");
         svg.removeAttribute("height");
 
-        var outsideBorder = paper.set();
+        paper.setStart();
         data.borders.forEach(function(border){
-            var path = paper.path(border.path);
-            outsideBorder.push(path);
+            paper.path(border.path);
         });
+        var outsideBorder = paper.setFinish();
         outsideBorder.blur(10);
 
-        var lands = paper.set();
+        paper.setStart();
         data.lands.forEach(function(land){
             var path = paper.path(land.path);
             path.attr({fill: '#D3E2DA','stroke-width': '.5','stroke-opacity': '1'});
@@ -32,9 +32,8 @@ function GameCtrl($scope) {
             if (land.transform){
                 path.transform(land.transform);
             }
-
-            lands.push(path);
         });
+        var lands = paper.setFinish();
 
         lands.hover(function(){ //IN
             this.a = {
@@ -58,5 +57,4 @@ function GameCtrl($scope) {
             alert(this.data().id);
         });
     }
-
 }
