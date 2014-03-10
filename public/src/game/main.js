@@ -5,7 +5,7 @@
 
 function GameCtrl($scope) {
 
-    socket.emit("game.getFeaturedGame" , onReceiveGameData);
+    socket.emit("game.getFeaturedGame", onReceiveGameData);
     function onReceiveGameData(err, data) {
         console.dir(data);
 

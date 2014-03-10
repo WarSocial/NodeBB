@@ -11,7 +11,8 @@
 	<script src="{relative_path}/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="{relative_path}/vendor/colorpicker/colorpicker.css">
 	<script src="{relative_path}/socket.io/socket.io.js"></script>
-	<script src="{relative_path}/src/app.js?{cache-buster}"></script>
+	<script src="{relative_path}/vendor/angularjs/angular.min.js"></script>
+    <script src="{relative_path}/src/app.js?{cache-buster}"></script>
 	<script src="{relative_path}/src/templates.js?{cache-buster}"></script>
 	<script src="{relative_path}/src/translator.js?{cache-buster}"></script>
 	<script src="{relative_path}/src/ajaxify.js?{cache-buster}"></script>
