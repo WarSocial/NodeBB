@@ -11,11 +11,11 @@ function GameCtrl($scope) {
 
         var paper = Raphael("game-board");
 
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-            paper.setSize(700,480);
-        } else {
+//        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+//            paper.setSize(700,480);
+//        } else {
             paper.setViewBox(0,0,700,480,true);
-        }
+//        }
 
         // ok, raphael sets width/height even though a viewBox has been set, so let's rip out those attributes (yes, this will not work for VML)
         var svg = document.querySelector("svg");
