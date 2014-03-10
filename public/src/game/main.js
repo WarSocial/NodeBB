@@ -32,10 +32,13 @@ function GameCtrl($scope) {
         paper.setStart();
         data.lands.forEach(function(land){
             var path = paper.path(land.path);
-            path.attr({fill: '#D3E2DA','stroke-width': '.5','stroke-opacity': '1'});
 
             if (land.transform){
                 path.transform(land.transform);
+            }
+
+            if (land.attr){
+                path.attr(land.attr);
             }
         });
         var lands = paper.setFinish();
