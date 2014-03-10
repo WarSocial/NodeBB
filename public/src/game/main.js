@@ -57,9 +57,5 @@ function GameCtrl($scope) {
                 opacity: this.a.opacity
             });
         });
-
-        lands.click(function(){
-            alert(this.data().id);
-        });
     }
 }
