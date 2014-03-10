@@ -24,7 +24,16 @@ function GameCtrl($scope) {
 
         paper.setStart();
         data.borders.forEach(function(border){
-            paper.path(border.path);
+            var path = paper.path(border.path);
+
+            if (border.transform){
+                path.transform(border.transform);
+            }
+
+            if (border.attr){
+                path.attr(border.attr);
+            }
+
         });
         var outsideBorder = paper.setFinish();
         outsideBorder.blur(10);
