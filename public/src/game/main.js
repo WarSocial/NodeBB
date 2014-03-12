@@ -56,7 +56,7 @@ function GameCtrl($scope) {
         paper.setStart();
         data.army.paths.forEach(function(item){
             var path = paper.path(item.path);
-
+            paper.text(15,5,"100");
             if (item.transform){
                 path.transform(item.transform);
             }
@@ -66,7 +66,7 @@ function GameCtrl($scope) {
             }
         });
         var army = paper.setFinish();
-        army.clone().transform("t120,85...");
+        army.clone().transform("t120,85...").attr({text:"100"});
         army.clone().transform("t80,157...");
         army.clone().transform("t46,226...");
         army.clone().transform("t101,218...");
