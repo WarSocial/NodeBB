@@ -66,6 +66,7 @@ function GameCtrl($scope) {
                 path.attr(item.attr);
             }
         });
+
         var army = paper.setFinish();
         army.clone().transform("t120,85...").attr({text:"1"});
         army.clone().transform("t80,157...").attr({text:"2"});
@@ -87,11 +88,11 @@ function GameCtrl($scope) {
         army.clone().transform("t365,301...").attr({text:"18"});
         army.clone().transform("t429,333...").attr({text:"19"});
         army.clone().transform("t455,238...").attr({text:"20"});
-        army.clone().transform("t522,169...").attr({text:"21", fill: "green"});
-        army.clone().transform("t610,191...").attr({text:"22", fill: "yellow"});
-        army.clone().transform("t573,247...").attr({text:"23", fill: "red"});
-        army.clone().transform("t506,300...").attr({text:"24", fill: "teal"});
-        army.clone().transform("t451,413...").attr({text:"25", fill: "blue"});
+        army.clone().transform("t522,169...").attr({text:"21", fill: "green", stroke:"black", "stroke-width":.8});
+        army.clone().transform("t610,191...").attr({text:"22", fill: "yellow", stroke:"black", "stroke-width":.8});
+        army.clone().transform("t573,247...").attr({text:"23", fill: "red", stroke:"black", "stroke-width":.8});
+        army.clone().transform("t506,300...").attr({text:"24", fill: "teal", stroke:"black", "stroke-width":.8});
+        army.clone().transform("t451,413...").attr({text:"25", fill: "blue", stroke:"black", "stroke-width":.8});
         army.hide();
 
         lands.hover(function(){ //IN
