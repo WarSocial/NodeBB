@@ -23,12 +23,12 @@ function Land (landData, armyData, paper) {
         this.army = new Army(armyData, paper);
         this.army.transform(landData.armyTransform + "...");
 
-        var colors = ['Cornsilk','CornflowerBlue','Violet','DarkTurquoise','Gold','LightGreen','Violet'];
+        var colors = ['#FF6262','#FFA347','#FFFF75','#A3FF75','#0099FF','#FF66FF'];
 
         if (this.name) {
             var random = Math.floor(Math.random()*8) + 1;
             this.army.text(random.toString());
-            this.army.bgColor(colors[Math.floor(Math.random()*7)]);
+            this.army.bgColor(colors[Math.floor(Math.random()*6)]);
         }
 
         //army.clone().transform("t451,413...").attr({text:"25", fill: "blue", stroke:"black", "stroke-width":.8});
