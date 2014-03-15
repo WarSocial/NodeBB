@@ -51,3 +51,24 @@ Land.prototype.data = function(name, data) {
 Land.prototype.text = function(message) {
     return this.army.text(message);
 };
+
+Land.prototype.selected = function(value) {
+    if (value){
+        this.path.toFront();
+        this.path.g = this.path.glow({opacity: 1.0, color: "red", width: 5});
+        this.army.set.toFront();
+    } else {
+        if (this.path.g){
+            this.path.g.remove();
+            delete this.path.g;
+        }
+    }
+};
+
+Land.prototype.isSelected = function() {
+    if (this.path.g){
+        return true;
+    } else {
+        return false;
+    }
+};

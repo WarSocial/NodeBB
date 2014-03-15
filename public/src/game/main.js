@@ -36,14 +36,17 @@ function GameCtrl($scope) {
                 lands.push(l);
 
                 l.hover(function(){ //IN
-                    orig_attr = l.attr();
+                    if (orig_attr == null){
+                        orig_attr = l.attr();
+                    }
                     l.attr(hover_attr);
                 }, function(){ //OUT
                     l.attr(orig_attr);
+                    orig_attr = null;
                 });
 
                 l.click(function(){
-                    alert(l.text());
+                    l.selected(!l.isSelected());
                 });
             });
 
