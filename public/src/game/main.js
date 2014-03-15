@@ -74,6 +74,7 @@ function GameCtrl($scope) {
 
                 console.log("t" + sx.toString() + "," + sy.toString());
             });
+            rect.hide();
         }).fail(function() {
             console.log( "error parsing map json" );
         });
