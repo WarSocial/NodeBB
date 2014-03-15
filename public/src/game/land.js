@@ -33,6 +33,18 @@ function Land (landData, armyData, paper) {
 
         //army.clone().transform("t451,413...").attr({text:"25", fill: "blue", stroke:"black", "stroke-width":.8});
     }
+
+    var hover_attr = { fill: 'red', opacity: 0.6 };
+
+    this.hover(function(){ //IN
+        if (!ctx.a){
+            ctx.a = ctx.attr();
+            ctx.attr(hover_attr);
+        }
+    }, function(){ //OUT
+        ctx.attr(ctx.a);
+        delete ctx.a
+    });
 }
 
 Land.prototype.hover = function(inCallBack, outCallBack) {

@@ -30,20 +30,7 @@ function GameCtrl($scope) {
 
             data.lands.forEach(function(land){
                 var l = new Land(land, data.army, paper);
-                var orig_attr = null;
-                var hover_attr = { fill: 'red', opacity: 0.6 };
-
                 lands.push(l);
-
-                l.hover(function(){ //IN
-                    if (orig_attr == null){
-                        orig_attr = l.attr();
-                    }
-                    l.attr(hover_attr);
-                }, function(){ //OUT
-                    l.attr(orig_attr);
-                    orig_attr = null;
-                });
 
                 l.click(function(){
                     l.selected(!l.isSelected());
