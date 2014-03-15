@@ -24,17 +24,18 @@ function GameCtrl($scope) {
 
             data.borders.forEach(function(border){
                 var b = new Border(border, paper);
+                b.blur(4);
                 borders.push(b);
-                b.blur(10);
             });
 
             data.lands.forEach(function(land){
-                var l = new Land(land, data.army, paper);
-                lands.push(l);
+                var l = new Land(land, paper);
 
-                l.click(function(){
-                    l.selected(!l.isSelected());
+                l.army.click(function(){
+                    l.army.selected(!l.army.isSelected());
                 });
+
+                lands.push(l);
             });
 
             var rect = paper.rect(0,0,700,480);
@@ -49,8 +50,8 @@ function GameCtrl($scope) {
                 var my = event.clientY - bnds.top;
 
                 // divide x/y by the bounding w/h to get location %s and apply factor by actual paper w/h
-                var fx = mx/bnds.width * rect.attrs.width
-                var fy = my/bnds.height * rect.attrs.height
+                var fx = mx/bnds.width * rect.attrs.width;
+                var fy = my/bnds.height * rect.attrs.height;
 
                 // cleanup output
                 fx = Number(fx).toPrecision(3);

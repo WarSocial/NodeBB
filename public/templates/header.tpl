@@ -29,7 +29,8 @@
 			paths: {
 			    "raphaeljs": '../../vendor/raphaeljs/raphaeljs.min',
 			    "forum": '../forum',
-				"game": '../game'
+				"game": '../game',
+				"fonts": '../fonts'
 			}
 		});
 	</script>

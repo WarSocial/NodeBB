@@ -2,56 +2,58 @@
  * Created by DHilgaertner on 3/13/14.
  */
 
-function Army (data, paper) {
-    this.set = paper.set();
-
-    var ctx = this;
-    data.paths.forEach(function(item){
-        var path = paper.path(item.path);
-
-        if (item.transform){
-            path.transform(item.transform);
-        }
-
-        if (item.attr){
-            path.attr(item.attr);
-        }
-
-        ctx.set.push(path);
-    });
-
-    this.textEl = paper.text(16,5,"");
-    ctx.set.push(this.textEl);
+function Army (land, paper) {
+    this.overlay = land.path.clone();
+    this.centerTF = land.centerTF;
 }
 
 Army.prototype.text = function(message) {
     if (message){
-        return this.textEl.attr({text:message});
+        var paper = this.overlay.paper;
+
+        if (this.textEl){
+            this.textEl.remove();
+            delete this.textEl;
+        }
+
+        this.textEl = paper.print(13, 10, message, paper.getFont("Capture it"), 25);
+        this.textEl.transform(this.centerTF + "...");
+        this.t = message;
+        return true;
     } else {
-        return this.textEl.attr("text");
+        return this.t;
     }
 };
 
 Army.prototype.hover = function(inCallBack, outCallBack) {
-    this.set.hover(inCallBack, outCallBack)
+    this.overlay.hoverInBounds(inCallBack, outCallBack);
 };
 
 Army.prototype.click = function(callback) {
-    this.set.click(callback);
-};
-
-Army.prototype.attr = function(attrObj) {
-    return this.set.attr(attrObj);
-};
-
-Army.prototype.data = function(name, data) {
-    return this.set.data(name, data);
-};
-
-Army.prototype.transform = function(data) {
-    return this.set.transform(data);
+    this.overlay.click(callback);
 };
 
 Army.prototype.bgColor = function(color) {
-    this.set[1].attr({fill:color});
+    this.overlay.attr({ fill: color, opacity: 0.5 });
 }
+
+Army.prototype.selected = function(value) {
+    if (value){
+        this.overlay.toFront();
+        this.overlay.g = this.overlay.glow({opacity: 1.0, color: "white", width: 5});
+        this.textEl.toFront();
+    } else {
+        if (this.overlay.g){
+            this.overlay.g.remove();
+            delete this.overlay.g;
+        }
+    }
+};
+
+Army.prototype.isSelected = function() {
+    if (this.overlay.g){
+        return true;
+    } else {
+        return false;
+    }
+};
