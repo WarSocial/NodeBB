@@ -43,7 +43,7 @@ function GameCtrl($scope) {
                 });
 
                 l.click(function(){
-                    alert(l.name);
+                    alert(l.text());
                 });
             });
 

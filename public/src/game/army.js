@@ -19,7 +19,18 @@ function Army (data, paper) {
 
         ctx.set.push(path);
     });
+
+    this.textEl = paper.text(16,5,"");
+    ctx.set.push(this.textEl);
 }
+
+Army.prototype.text = function(message) {
+    if (message){
+        return this.textEl.attr({text:message});
+    } else {
+        return this.textEl.attr("text");
+    }
+};
 
 Army.prototype.hover = function(inCallBack, outCallBack) {
     this.set.hover(inCallBack, outCallBack)
@@ -40,3 +51,7 @@ Army.prototype.data = function(name, data) {
 Army.prototype.transform = function(data) {
     return this.set.transform(data);
 };
+
+Army.prototype.bgColor = function(color) {
+    this.set[1].attr({fill:color});
+}
