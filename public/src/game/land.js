@@ -20,14 +20,16 @@ function Land (landData, paper) {
         //TODO: Refactor: this white fill makes the armies look better while
         //  they lay on top.  This should be determined by presence of the army.
         //  Or perhaps encapsulated by army itself
-        this._path.attr({fill: "white"})
+        //this._path.attr({fill: "white"})
     }
 
-    if (landData.armyTransform) {
-        this.centerTF = landData.armyTransform;
+    if (landData.center) {
+        this.center = landData.center;
         this.army = new Army(this);
 
-        var colors = ['#FF6262','#FFA347','#FFFF75','#A3FF75','#0099FF','#FF66FF'];
+        //var colors = ['#FF6262','#FFA347','#FFFF75','#A3FF75','#0099FF','#FF66FF'];
+        var colors = ['#BA0404','#B56804','#E0D204','#297305','#03329E','#515052'];
+        var colorsHover = ['#DC0404','#DC7F04','#FAEA0F','#399D07','#0445DC','#666567']; // from http://colllor.com
 
         if (this.name) {
             var random = Math.floor(Math.random()*8) + 1;
@@ -35,12 +37,10 @@ function Land (landData, paper) {
             this.army.bgColor(colors[Math.floor(Math.random()*6)]);
         }
 
-        var hover_attr = { fill: 'red' };
-
         this.army.hover(function(){ //IN
             if (!this.a){
                 this.a = this.attr();
-                this.attr(hover_attr);
+                this.attr({fill: colorsHover[colors.indexOf(this.attr("fill"))]});
             }
         }, function(){ //OUT
             this.attr(this.a);

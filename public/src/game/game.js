@@ -1,4 +1,4 @@
-define(['raphaeljs', 'fonts/Capture_it_400.font', 'game/main', 'game/land', 'game/border', 'game/army'], function() {
+define(['raphaeljs', 'fonts/Blackwood_Castle_400.font', 'game/main', 'game/land', 'game/border', 'game/army'], function() {
 	var	Game = {};
 
 	Game.init = function() {
@@ -29,6 +29,18 @@ define(['raphaeljs', 'fonts/Capture_it_400.font', 'game/main', 'game/land', 'gam
         });
 
         return this;
+    }
+
+    if (!String.format) {
+        String.format = function(format) {
+            var args = Array.prototype.slice.call(arguments, 1);
+            return format.replace(/{(\d+)}/g, function(match, number) {
+                return typeof args[number] != 'undefined'
+                    ? args[number]
+                    : match
+                    ;
+            });
+        };
     }
 
 	return Game;

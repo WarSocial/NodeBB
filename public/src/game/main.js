@@ -21,6 +21,7 @@ function GameCtrl($scope) {
 
             var borders = [];
             var lands = [];
+            var selected = [];
 
             data.borders.forEach(function(border){
                 var b = new Border(border, paper);
@@ -31,8 +32,27 @@ function GameCtrl($scope) {
             data.lands.forEach(function(land){
                 var l = new Land(land, paper);
 
+                function emptySelected() {
+                    selected.forEach(function(item){
+                        item.army.selected(false);
+                    });
+                    selected.length = 0;
+                }
+
                 l.army.click(function(){
-                    l.army.selected(!l.army.isSelected());
+                    if (l.army.isSelected()) {
+                        emptySelected();
+                    } else {
+                        l.army.selected(true);
+                        selected.push(l);
+
+                        if (selected.length > 1) {
+                            //Attack!
+                            console.log("ATTACK!");
+                            selected[0].army.attack(selected[1].army);
+                            emptySelected();
+                        }
+                    }
                 });
 
                 lands.push(l);

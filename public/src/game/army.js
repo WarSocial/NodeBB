@@ -4,7 +4,7 @@
 
 function Army (land) {
     this._overlay = land._path.clone();
-    this._centerTF = land.centerTF;
+    this._center = land.center;
 }
 
 Army.prototype.text = function(message) {
@@ -16,8 +16,9 @@ Army.prototype.text = function(message) {
             delete this._textEl;
         }
 
-        this._textEl = paper.print(13, 10, message, paper.getFont("Capture it"), 25);
-        this._textEl.transform(this._centerTF + "...");
+        this._textEl = paper.print(0, 0, message, paper.getFont("Blackwood Castle"), 25);
+        this._textEl.attr({stroke:"white", fill: "white"});
+        this._textEl.transform(String.format("t{0},{1}...", this._center.x, this._center.y));
         this._t = message;
         return true;
     } else {
@@ -34,14 +35,13 @@ Army.prototype.click = function(callback) {
 };
 
 Army.prototype.bgColor = function(color) {
-    this._overlay.attr({ fill: color, opacity: 0.5 });
+    this._overlay.attr({ fill: color, opacity: 1 });
 }
 
 Army.prototype.selected = function(value) {
     if (value){
-        this._overlay.toFront();
-        this._overlay.g = this._overlay.glow({opacity: 1.0, color: "white", width: 5});
-        this._textEl.toFront();
+        this._overlay.g = this._overlay.glow({opacity: 1.0, color: "white", width: 2});
+        this._overlay.g.toFront();
     } else {
         if (this._overlay.g){
             this._overlay.g.remove();
@@ -56,4 +56,16 @@ Army.prototype.isSelected = function() {
     } else {
         return false;
     }
+};
+
+Army.prototype.attack = function(opponent) {
+    var deltax = opponent._textEl.getBBox().x - this._textEl.getBBox().x;
+    var deltay = opponent._textEl.getBBox().y - this._textEl.getBBox().y;
+    var attack_plan = String.format("...t{0},{1}", deltax, deltay);
+    var transform = this._textEl.transform();
+    this._textEl.toFront();
+    this._textEl.animate({ transform: attack_plan }, 1000, "backIn", function(){
+        console.log("animation done!");
+        this.animate({ transform: transform }, 200);
+    });
 };
