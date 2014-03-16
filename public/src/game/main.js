@@ -7,7 +7,7 @@ function GameCtrl($scope) {
 
     socket.emit("game.getFeaturedGame", onReceiveGameData);
     function onReceiveGameData(err, d) {
-        $.getJSON("/maps/map-1.json", null, function(data) {
+        $.getJSON("/maps/map-1.json?v=1", null, function(data) {
             console.dir(data);
 
             var paper = Raphael("game-board");
