@@ -64,7 +64,7 @@ Army.prototype.attack = function(opponent) {
     var attack_plan = String.format("...t{0},{1}", deltax, deltay);
     var transform = this._textEl.transform();
     this._textEl.toFront();
-    this._textEl.animate({ transform: attack_plan }, 1000, "backIn", function(){
+    this._textEl.animate({ transform: attack_plan }, 1000, "<", function(){
         console.log("animation done!");
         this.animate({ transform: transform }, 200);
     });
