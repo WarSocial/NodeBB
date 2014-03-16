@@ -40,7 +40,7 @@ Army.prototype.bgColor = function(color) {
 
 Army.prototype.selected = function(value) {
     if (value){
-        this._overlay.g = this._overlay.glow({opacity: 1.0, color: "white", width: 2});
+        this._overlay.g = this._overlay.glow({opacity: 1.0, color: "white", width:0.9});
         this._overlay.g.toFront();
     } else {
         if (this._overlay.g){
@@ -64,8 +64,16 @@ Army.prototype.attack = function(opponent) {
     var attack_plan = String.format("...t{0},{1}", deltax, deltay);
     var transform = this._textEl.transform();
     this._textEl.toFront();
+
     this._textEl.animate({ transform: attack_plan }, 1000, "<", function(){
-        console.log("animation done!");
-        this.animate({ transform: transform }, 200);
+        var explosion = new Explosion(opponent._center, this.paper);
+        var ctx = this;
+        setTimeout(function(){
+            explosion._set.remove();
+            ctx.animate({ transform: transform }, 200, "<", function(){
+                console.log("animation over!")
+            });
+        }, 1500);
+
     });
 };

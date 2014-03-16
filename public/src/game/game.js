@@ -1,4 +1,4 @@
-define(['raphaeljs', 'fonts/Blackwood_Castle_400.font', 'game/main', 'game/land', 'game/border', 'game/army'], function() {
+define(['raphaeljs', 'fonts/Blackwood_Castle_400.font', 'game/main', 'game/land', 'game/border', 'game/army', 'game/explosion'], function() {
 	var	Game = {};
 
 	Game.init = function() {
